@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pixel Quest RPG</title>
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+    <div class="hero">
+        <div class="drag-wrapper dark-mode">
+            <img src="assets/img/drag.gif" alt="" class="drag-overlay drag1" />
+            <img src="assets/img/drag.gif" alt="" class="drag-overlay drag2" />
+            <img src="assets/img/drag.gif" alt="" class="drag-overlay drag3" />
+        </div>
+        <nav class="navbar navbar-expand navbar-dark">
+            <div class="container">
+                <a href="" class="navbar-brand">Pixel Quest</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a href="" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="" class="nav-link">Heroes</a></li>
+                        <li class="nav-item"><a href="" class="nav-link">Quests</a></li>
+                        <li class="nav-item center">
+                            <button id="toggleLight" class="btn btn-sm btn-outline-light ms-3">
+                                <span id="toggleIcon" class="bi bi-moon-fill"></span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container d-flex align-items-center h-75">
+            <div class="hero-content center flex-column w-100 text-light">
+                <h1 class="mb-0 pb-0">PIXEL QUEST</h1>
+                <p>
+                    Explore forgotten dungeons, and shape your destiny in a world on the brink
+                </p>
+                <div class="d-flex gap-3" id="startBtnContainer">
+                    <a href="#heroes" class="btn btn-custom">
+                        <img src="assets/img/warrior.gif" alt="" height="30" width="30" class="m-0 p-0" />
+                        Choose Hero
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="heroes" class="p-5">
+        <div class="container">
+            <div class="container bg-warning p-0 rounded">
+                <h2 class="text-center fw-bold py-2">
+                    <i class="bi-lightning-fill me-2"></i>Choose Your Hero
+                    <i class="bi-lightning-fill mx-2"></i>
+                </h2>
+            </div>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <h3>Warrior</h3>
+                        <img src="assets/img/warrior.gif" alt="" />
+                        <p>Strong, brave, and armored. Your go-to for melee combat.</p>
+                        <a href="index.html?character=warrior" class="btn btn-custom">Choose 🗡️</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <h3>Wizard</h3>
+                        <img src="assets/img/wizard.gif" alt="" />
+                        <p>Master of magic and elemental forces. Low defense, high power.</p>
+                        <a href="index.html?character=wizard" class="btn btn-custom">Choose 🔮</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <h3>Chopper</h3>
+                        <img src="assets/img/chopper.gif" alt="" />
+                        <p>Swift and agile, excels in ranged combat and evasion.</p>
+                        <a href="index.html?character=slime" class="btn py-3 btn-secondary"
+                            style="pointer-events: none; opacity: 0.6;">Comming soon <i class="bi bi-lock"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Helper to get query param from URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Save player stats to localStorage based on hero type
+        function chooseHero(heroType) {
+            const starterStats = {
+                warrior: { hp: 100, maxHp: 100, attack: 15, defense: 20, speed: 10 },
+                wizard: { hp: 100, maxHp: 100, attack: 20, defense: 10, speed: 15 },
+                slime: { hp: 100, maxHp: 100, attack: 10, defense: 15, speed: 20 },
+            };
+
+            const skills = {
+                warrior: {
+                    attackSkill: { name: "Sword Slash", type: "attack", power: 20 },
+                    buffSkill: { name: "Fortify Armor", type: "buff", stat: "defense", value: 3 }
+                },
+                wizard: {
+                    attackSkill: { name: "Arcane Burst", type: "attack", power: 25 },
+                    buffSkill: { name: "Power Surge", type: "buff", stat: "attack", value: 3 }
+                },
+                slime: {
+                    attackSkill: { name: "Slime Whip", type: "attack", power: 15 },
+                    buffSkill: { name: "Quicken", type: "buff", stat: "speed", value: 3 }
+                }
+            };
+
+            const stats = starterStats[heroType] || { hp: 100, maxHp: 100, attack: 15, defense: 15, speed: 15 };
+            const skillSet = skills[heroType];
+
+            const player = {
+                character: heroType,
+                hp: stats.hp,
+                maxHp: stats.maxHp,
+                attack: stats.attack,
+                defense: stats.defense,
+                speed: stats.speed,
+                gold: 300,
+                inventory: [],
+                weaponLevel: 0,
+                armorLevel: 0,
+                kills: { slime: 0, wolf: 0, jessica: 0, dragon: 0 },
+                currentQuestIndex: 0,
+                skills: {
+                    basic: { name: "Basic Attack", type: "attack", power: 10 },
+                    attackSkill: skillSet.attackSkill,
+                    buffSkill: skillSet.buffSkill
+                }
+            };
+
+            localStorage.setItem('player', JSON.stringify(player));
+        }
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroesSection = document.querySelector('#heroes');
+            const startBtnContainer = document.getElementById('startBtnContainer');
+
+            const player = JSON.parse(localStorage.getItem('player'));
+
+            // If player already chosen a hero
+            if (player && player.character) {
+                if (heroesSection) {
+                    heroesSection.remove(); // remove hero selection section
+                }
+
+                if (startBtnContainer) {
+                    startBtnContainer.innerHTML = `
+                    <a href="#" class="btn btn-custom" id="chooseAnotherBtn">
+                        <i class="bi bi-arrow-repeat me-1"></i>Choose Another Hero
+                    </a>
+                    <a href="character.html" class="btn btn-custom">
+                        <i class="bi bi-controller me-1"></i>Back to the Game
+                    </a>
+                `;
+                }
+
+                // Listen for click on "Choose Another Hero" and prevent default navigation
+                document.addEventListener('click', (e) => {
+                    if (e.target && e.target.id === 'chooseAnotherBtn') {
+                        e.preventDefault();
+                        localStorage.removeItem('player');
+                        window.location.reload();
+                    }
+                });
+
+            }
+
+            // If URL has ?character=, save player and redirect
+            const characterParam = getQueryParam('character');
+            if (characterParam) {
+                chooseHero(characterParam);
+                window.location.href = 'character.html';
+            }
+        });
+    </script>
+
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

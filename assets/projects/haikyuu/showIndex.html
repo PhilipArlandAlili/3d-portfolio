@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haikyuu</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="assets/css/styles.css"> -->
+</head>
+
+<style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        background-color: #FF8C00;
+    }
+
+    .hero-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero-img img {
+        width: 100%;
+        height: auto;
+        filter: saturate(1.9);
+    }
+
+    .logo img {
+        max-width: 200px;
+        height: auto;
+    }
+
+    @media (max-width: 576px) {
+        .logo img {
+            max-width: 100px !important;
+        }
+
+        .hero-img img {
+            max-width: 320px !important;
+        }
+
+        .hero-section {
+            padding: 1rem 0;
+        }
+    }
+</style>
+
+<body id="page-top">
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section center" id="hero">
+            <div class="container-fluid hero-content pt-3">
+                <div class="row center flex-column">
+                    <div class="col-lg-4 col-md-6 col-sm-12 -lg-start hero-text center flex-column logo">
+                        <img src="assets/img/logo.png" class="img-fluid" alt="Haikyuu Logo">
+                    </div>
+                    <div class="col-lg-8 col-md-6 col-sm-12 p-0 pt-3">
+                        <div class="hero-img center">
+                            <img src="assets/img/hero-img.png" alt="Haikyu Image" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

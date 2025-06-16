@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip | Portfolio</title>
+    <link rel="icon" href="3.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<style>
+    :root {
+        --vsgreen: #32CD32;
+        --vsred: #ef0606;
+        --vsyellow: #f5da2d;
+        --vsorange: #ffab3d;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Consolas', 'Courier New', monospace;
+        line-height: 1.6;
+        background-color: #1a1a1a;
+        color: #ffffff;
+    }
+
+    /* Welcome Section */
+    #welcome-section {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to bottom, #000000, #1c1c1c, #2b2b2b);
+        position: relative;
+    }
+
+    .welcome-content {
+        width: 100%;
+    }
+
+    .welcome-hero {
+        display: flex;
+        gap: 60px;
+    }
+
+    .welcome-me img {
+        border-radius: 50%;
+        width: 300px;
+        filter: contrast(1.2) saturate(1.1) drop-shadow(0 0 10px rgba(50, 205, 50, 0.8));
+    }
+
+    .welcome-text {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .indent {
+        margin-left: 4rem;
+    }
+
+    .greenish {
+        margin-bottom: 1rem;
+        color: var(--vsgreen);
+    }
+
+    .yellowish {
+        color: var(--vsyellow);
+    }
+
+    .reddish {
+        color: var(--vsred);
+    }
+
+    .oranges {
+        color: var(--vsorange);
+    }
+    
+    @media screen and (max-width: 576px) {
+        #welcome-section {
+            padding: 2rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .welcome-hero {
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .welcome-me img {
+            width: 100px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .welcome-text {
+            font-size: .5rem;
+        }
+
+        .scroll-indicator {
+            position: static;
+            margin-top: 2rem;
+        }
+    }
+
+
+    .typing-effect {
+        overflow: hidden;
+        border-right: .15em solid #4CAF50;
+        /* You can adjust the thickness by changing .15em */
+        white-space: nowrap;
+        margin: 0;
+        width: 13ch;
+        animation:
+            typing 4s steps(12, end) infinite,
+            blink-caret .75s step-end infinite;
+    }
+
+    @keyframes typing {
+        0% {
+            width: 0
+        }
+
+        30% {
+            width: 13ch
+        }
+
+        60% {
+            width: 13ch
+        }
+
+        90% {
+            width: 0
+        }
+
+        100% {
+            width: 0
+        }
+    }
+
+    @keyframes blink-caret {
+
+        from,
+        to {
+            border-color: transparent
+        }
+
+        50% {
+            border-color: #4CAF50
+        }
+    }
+</style>
+
+<body>
+    <section id="welcome-section">
+        <div class="welcome-content">
+            <div class="welcome-hero">
+                <div class="welcome-me">
+                    <img src="me.png" alt="Philip Arland Alili">
+                </div>
+                <div class="welcome-text">
+                    <div class="greenish">
+                        <h3 class="typing-effect">// User Data</h3>
+                    </div>
+                    <h3>const user = <span class="yellowish">{</span></h3>
+                    <h3 class="indent"><span class="reddish">name:</span> <span class="oranges">"Philip Arland
+                            Alili"</span>,</h3>
+                    <h3 class="indent"><span class="reddish">age:</span> <span class="oranges">23</span>,</h3>
+                    <h3 class="indent"><span class="reddish">focus:</span> <span class="oranges">"Frontend Web
+                            Developer"</span>,</h3>
+                    <h3 class="yellowish">}</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+
+</html>

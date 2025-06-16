@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Quest RPG</title>
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<style>
+    .drag-overlay {
+        width: 30vw;
+        max-width: 500px;
+        min-width: 100px;
+        height: auto;
+        position: absolute;
+        z-index: 3;
+        pointer-events: none;
+    }
+
+    .drag1 {
+        top: 10vw !important;
+        right: 0;
+        animation: fly-left 10s linear infinite;
+    }
+
+    .drag2 {
+        top: 0 !important;
+        right: -20vw;
+        animation: fly-left 15s linear infinite;
+        animation-fill-mode: both;
+        animation-delay: 7s;
+    }
+
+    .drag3 {
+        top: 30vw !important;
+        left: 0;
+        animation: fly-right 15s linear infinite;
+        animation-fill-mode: both;
+        animation-delay: 12s;
+    }
+</style>
+
+<body>
+    <div class="hero">
+        <div class="drag-wrapper dark-mode">
+            <img src="assets/img/drag.gif" alt="" class="drag-overlay drag1" />
+            <img src="assets/img/drag.gif" alt="" class="drag-overlay drag2" />
+            <img src="assets/img/drag.gif" alt="" class="drag-overlay drag3" />
+        </div>
+        <nav class="navbar navbar-expand navbar-dark">
+            <div class="container">
+                <a href="#" class="navbar-brand">Pixel Quest</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a href="" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="" class="nav-link">Heroes</a></li>
+                        <li class="nav-item"><a href="" class="nav-link">Quests</a></li>
+                        <li class="nav-item center">
+                            <button id="toggleLight" class="btn btn-sm btn-outline-light ms-3">
+                                <span id="toggleIcon" class="bi bi-moon-fill"></span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container d-flex align-items-center h-75">
+            <div class="hero-content center flex-column w-100 text-light">
+                <h1 class="mb-0 pb-0">PIXEL QUEST</h1>
+                <p>
+                    Explore forgotten dungeons, and shape your destiny in a world on the brink
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

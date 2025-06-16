@@ -1,0 +1,568 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0a0e1a;
+    color: white;
+    overflow-x: hidden;
+    perspective: 1000px;
+    scroll-behavior: smooth;
+}
+
+/* 3D Background Effects */
+.bg-3d {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    z-index: -1;
+    background: radial-gradient(ellipse at center bottom, rgba(0, 255, 255, 0.15) 0%, rgba(0, 150, 150, 0.08) 40%, transparent 70%);
+    pointer-events: none;
+}
+
+.flow-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 200vh;
+    /* cover at least twice the viewport */
+    background-image:
+        linear-gradient(45deg, transparent 40%, rgba(0, 255, 255, 0.1) 50%, transparent 60%),
+        linear-gradient(-45deg, transparent 40%, rgba(0, 255, 255, 0.05) 50%, transparent 60%);
+    animation: flowLines 30s linear infinite;
+    transform-style: preserve-3d;
+    pointer-events: none;
+    z-index: -1;
+    background-attachment: fixed;
+}
+
+.flow-lines2 {
+    position: absolute;
+    bottom: 30%;
+    left: 0;
+    width: 100%;
+    min-height: 200vh;
+    /* cover at least twice the viewport */
+    background-image:
+        linear-gradient(45deg, transparent 40%, rgba(0, 255, 255, 0.1) 50%, transparent 60%),
+        linear-gradient(-45deg, transparent 40%, rgba(0, 255, 255, 0.05) 50%, transparent 60%);
+    animation: flowLines 30s linear infinite;
+    transform-style: preserve-3d;
+    pointer-events: none;
+    z-index: -1;
+    background-attachment: fixed;
+}
+
+
+@keyframes flowLines {
+    0% {
+        transform: translateZ(0) rotateZ(0deg);
+    }
+
+    100% {
+        transform: translateZ(50px) rotateZ(360deg);
+    }
+}
+
+.particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #00ffff;
+    border-radius: 50%;
+    box-shadow: 0 0 6px #00ffff;
+    animation: float 8s infinite ease-in-out;
+}
+
+.particle:nth-child(1) {
+    bottom: 0;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+    top: 20%;
+    right: 15%;
+    animation-delay: -2s;
+}
+
+.particle:nth-child(3) {
+    bottom: 60%;
+    left: 20%;
+    animation-delay: -4s;
+}
+
+.particle:nth-child(4) {
+    top: 60%;
+    right: 25%;
+    animation-delay: -6s;
+}
+
+.particle:nth-child(5) {
+    top: 80%;
+    left: 50%;
+    animation-delay: -8s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px) scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: translateY(-30px) scale(1.2);
+        opacity: 1;
+    }
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section {
+    /* min-height: 100vh; */
+    padding: 6rem 6% 4rem;
+    position: relative;
+}
+
+.myprofile-card {
+    margin-top: 40px;
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    background: linear-gradient(145deg, rgba(15, 25, 40, 0.95), rgba(10, 20, 35, 0.9));
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(0, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    animation: profileFloat 4s ease-in-out infinite;
+
+    /* Add perspective & transition */
+    transform: perspective(1200px) rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg));
+    transition: transform 0.1s ease;
+    will-change: transform;
+}
+
+.myprofile-card:hover {
+    animation: none;
+}
+
+.myprofile-card.animate-out {
+    transform: translateY(-100vh) scale(0.9) rotateX(15deg);
+    opacity: 0;
+    transition: all 1s ease;
+    pointer-events: none;
+}
+
+@keyframes profileFloat {
+
+    0%,
+    100% {
+        transform: translateY(0px) translateZ(0px);
+    }
+
+    50% {
+        transform: translateY(-50px) translateZ(20px);
+    }
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00ffff, #0099ff);
+    margin: 0 auto 1rem;
+    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+.profile-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.custom-btn-primary {
+    padding: 1.2rem 2.5rem;
+    background: linear-gradient(135deg, #00ffff, #0099ff);
+    color: #0a0e1a;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.custom-btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
+}
+
+.custom-btn-secondary {
+    padding: 1.2rem 2.5rem;
+    color: #8892a6;
+    border: 1px solid rgba(136, 146, 166, 0.3);
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.custom-btn-secondary:hover {
+    color: white;
+    border-color: #00ffff;
+    background: rgba(0, 255, 255, 0.05);
+}
+
+.gradient-text {
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #ffffff, #00ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.project-list .gradient-text {
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #ffffff, #00ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.text-infos {
+    color: #00ffff;
+}
+
+.cool-card {
+    background: linear-gradient(145deg, rgba(15, 25, 40, 0.95), rgba(10, 20, 35, 0.9));
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(0, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.tech-badge {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    margin: 0.5rem;
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 12px;
+    color: #00ffff;
+    font-weight: 600;
+    backdrop-filter: blur(8px);
+    box-shadow:
+        inset 0 0 10px rgba(0, 255, 255, 0.2),
+        0 0 15px rgba(0, 255, 255, 0.1),
+        0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+
+.stat-card-3d {
+    perspective: 1000px;
+    height: 100%;
+}
+
+.inner-3d {
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(0, 100, 100, 0.05));
+    border: 1px solid rgba(0, 255, 255, 0.15);
+    box-shadow:
+        inset 0 0 10px rgba(0, 255, 255, 0.1),
+        0 10px 25px rgba(0, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    transform-style: preserve-3d;
+    /* transform: rotateX(8deg) rotateY(-6deg) translateZ(10px); */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.inner-3d:hover {
+    transform: rotateX(0deg) rotateY(0deg) translateZ(20px);
+    box-shadow:
+        inset 0 0 20px rgba(0, 255, 255, 0.2),
+        0 20px 40px rgba(0, 255, 255, 0.25);
+}
+
+.inner-3d strong {
+    font-size: 2rem;
+    font-weight: 700;
+    display: block;
+    color: #00ffff;
+}
+
+.inner-3d span {
+    color: #aaa;
+    font-size: 0.95rem;
+}
+
+.dev-quote {
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 4px solid #00ffff;
+    box-shadow: 0 8px 24px rgba(0, 255, 255, 0.1), 0 0 20px rgba(0, 255, 255, 0.1) inset;
+    font-style: italic;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card {
+    background: linear-gradient(145deg, rgba(15, 25, 40, 0.8), rgba(10, 20, 35, 0.7));
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 20px;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.5), transparent);
+}
+
+.project-card:hover {
+    transform: translateY(-10px) rotateX(5deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 255, 255, 0.2);
+}
+
+.tech-tag {
+    padding: 0.3rem 0.8rem;
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: #00ffff;
+}
+
+.neon-card {
+    padding: 0.6rem 1.2rem;
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    box-shadow:
+        inset 0 0 10px rgba(0, 255, 255, 0.2),
+        0 0 15px rgba(0, 255, 255, 0.1),
+        0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.tech-badge:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow:
+        inset 0 0 10px rgba(0, 255, 255, 0.3),
+        0 0 20px rgba(0, 255, 255, 0.3),
+        0 10px 25px rgba(0, 255, 255, 0.1);
+    background: rgba(0, 255, 255, 0.15);
+}
+
+
+.contact {
+    padding: 6rem 0;
+    text-align: center;
+}
+
+.contact-3d {
+    position: relative;
+    perspective: 1000px;
+    margin-top: 3rem;
+}
+
+.contact-card {
+    background: linear-gradient(145deg, rgba(15, 25, 40, 0.9), rgba(10, 20, 35, 0.8));
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: rotateX(5deg) translateZ(30px);
+    animation: contactFloat 8s ease-in-out infinite;
+    color: #fff;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+@keyframes contactFloat {
+
+    0%,
+    100% {
+        transform: rotateX(5deg) translateZ(30px) translateY(0px);
+    }
+
+    50% {
+        transform: rotateX(5deg) translateZ(30px) translateY(-8px);
+    }
+}
+
+.contact-methods .contact-method {
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 2rem;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.contact-method:hover {
+    background: rgba(0, 255, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+.contact-icon {
+    font-size: 2rem;
+    color: #00ffff;
+    margin-bottom: 1rem;
+}
+
+.contact-method h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.contact-method p {
+    color: #8892a6;
+    margin: 0;
+}
+
+.contact-card input,
+.contact-card textarea {
+    background: rgba(20, 30, 45, 0.8);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    color: #e0f7ff;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.contact-card input::placeholder,
+.contact-card textarea::placeholder {
+    color: rgba(200, 255, 255, 0.5);
+}
+
+.contact-card input:focus,
+.contact-card textarea:focus {
+    border-color: rgba(0, 255, 255, 0.5);
+    outline: none;
+    background: rgba(20, 30, 45, 0.8);
+    color: #e0f7ff;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+}
+
+.footer-3d {
+    background: linear-gradient(145deg, rgba(15, 25, 40, 0.95), rgba(10, 20, 30, 0.9));
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+    border-top: 1px solid rgba(0, 255, 255, 0.1);
+    font-family: 'Inter', sans-serif;
+}
+
+.footer-3d a:hover {
+    color: #0ff;
+    /* neon cyan on hover */
+    text-decoration: underline;
+}
+
+
+
+@media screen and (max-width: 576px) {
+    .gradient-text {
+        font-size: 2.3rem;
+    }
+
+    .description {
+        font-size: 0.8rem !important;
+    }
+
+    .hero .custom-btn-primary,
+    .hero .custom-btn-secondary {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .dev-quote {
+        font-size: 0.8rem;
+    }
+
+    .tech-badge {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+        margin: 0.3rem;
+    }
+
+    .inner-3d {
+        padding: 1rem;
+        transform: none;
+        box-shadow: 0 8px 20px rgba(0, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+
+    .inner-3d strong {
+        font-size: 1.5rem;
+    }
+
+    .inner-3d span {
+        font-size: 0.85rem;
+    }
+
+    .contact-card {
+        transform: none;
+        animation: none;
+    }
+
+}
+
+/* Fade-Up Initial State */
+.fade-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 2s ease-out, transform 1s ease-out;
+}
+
+/* When visible */
+.fade-up.show {
+    opacity: 1;
+    transform: translateY(0);
+}

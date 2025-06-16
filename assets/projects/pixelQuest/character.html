@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pixel Quest RPG - My Hero</title>
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+        body {
+            background: url('assets/img/character-bg.jpg') top center no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="myHero" class="px-5 py-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center px-4 py-2 mb-3 shadow-lg">
+                <a href="index.html" class="btn btn-outline-warning fw-bold px-3">
+                    <i class="bi bi-arrow-left me-1"></i> Back
+                </a>
+
+                <h2 class="text-center fw-bold m-0 text-warning">
+                    <i class="bi bi-shield me-2"></i>My Hero<i class="bi bi-shield ms-2"></i>
+                </h2>
+
+                <a href="#store" class="btn btn-warning fw-bold px-3">
+                    <i class="bi bi-gem ms-1"></i> Store
+                </a>
+            </div>
+
+            <div class="row g-3 bg-warning bg-opacity-10 rounded mt-4">
+                <div class="col-md-4">
+                    <div class="text-center p-3">
+                        <img id="hero-img" src="" alt="Hero" class="img-fluid" />
+                        <h3 id="hero-name" class="mb-3 text-warning"></h3>
+
+                        <ul class="list-unstyled mb-0 px-3">
+                            <li class="d-flex justify-content-between py-1 px-2 border-bottom border-secondary">
+                                <span class="fw-bold text-warning">HP:</span>
+                                <span id="hero-hp" class="text-danger fw-bold"></span>
+                            </li>
+                            <li class="d-flex justify-content-between py-1 px-2 border-bottom border-secondary">
+                                <span class="fw-bold text-warning">Attack:</span>
+                                <span id="hero-attack" class="text-light"></span>
+                            </li>
+                            <li class="d-flex justify-content-between py-1 px-2 border-bottom border-secondary">
+                                <span class="fw-bold text-warning">Defense:</span>
+                                <span id="hero-defense" class="text-light"></span>
+                            </li>
+                            <li class="d-flex justify-content-between py-1 px-2 border-bottom border-secondary">
+                                <span class="fw-bold text-warning">Speed:</span>
+                                <span id="hero-speed" class="text-light"></span>
+                            </li>
+                            <li class="d-flex justify-content-between py-1 bg-warning px-2">
+                                <span class="fw-bold text-dark">Gold:</span>
+                                <div class="gold">
+                                    <i class="bi-coin fw-bold"></i>
+                                    <span id="hero-gold" class="text-dark fw-bold"></span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4 d-flex flex-column" style="height: 100%;">
+                    <div class="text-center p-3">
+                        <h3 class="mb-3 text-warning">Items</h3>
+                        <div class="container">
+                            <div class="row g-2" id="items">
+                                <!-- Inventory items will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center p-3 flex-grow-1 d-flex flex-column">
+                        <h3 class="mb-3 text-warning">Inventory</h3>
+                        <div class="container bg-warning bg-opacity-50 rounded p-2 flex-grow-1 overflow-auto">
+                            <div class="row g-2" id="inventory">
+                                <!-- Inventory items -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 my-4">
+                    <div class="bg-dark h-100 text-center p-3 m-0 text-light" id="character-tale">
+                        <h3 class="mb-3 text-warning" id="tale-title"></h3>
+                        <div class="text-start px-2"
+                            style="font-family: 'Georgia', serif; font-size: 0.95rem; line-height: 1.6;">
+                            <div id="tale-body"></div>
+                            <p class="fst-italic text-warning small" id="tale-quote"></p>
+                            <hr class="border-warning" />
+                            <p class="mb-2"><strong>Current Quest:</strong> <span id="current-quest"></span></p>
+                            <hr class="border-warning" />
+
+                            <a href="#" id="fightBtn" class="btn btn-sm btn-warning w-100 fw-bold">
+                                <i class="bi bi-lightning-charge-fill me-1"></i> Fight!
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="itemModalLabel">No Items Found</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    You don't have any items equipped. Do you wish to proceed?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-warning" id="goToStoreBtn" data-bs-dismiss="modal">No,
+                        go to Store</button>
+                    <button id="proceedBtn" type="button" class="btn btn-warning">Proceed</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section id="store" class="px-4 py-5">
+        <div class="container">
+            <div class="px-4 py-2 mb-4 shadow-lg bg-warning rounded">
+                <h2 class="text-center fw-bold text-dark">
+                    <i class="bi bi-gem me-2"></i>Welcome to the Store<i class="bi bi-gem ms-2"></i>
+                </h2>
+            </div>
+
+            <div class="row g-4" id="store-items">
+                <!-- Store items will be rendered here dynamically -->
+            </div>
+        </div>
+    </section>
+    <script src="assets/js/character.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

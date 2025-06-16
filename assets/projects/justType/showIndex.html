@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Just Type | Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #323437;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #ededed;
+        }
+
+        header {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo img {
+            height: 80px;
+        }
+
+        .container {
+            background-color: #3a3b3c;
+            padding: 30px 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #000;
+            background-color: #e2b714;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: gold;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+
+            input[type="text"],
+            button {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form id="name-form">
+            <label for="player-name">Enter Name to Play the Game!</label>
+            <input type="text" id="player-name" placeholder="Enter Name" required />
+            <button type="button" id="btn">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('btn').addEventListener('click', function () {
+            alert('Click live demo to play the game!');
+        });
+    </script>
+</body>
+
+</html> 
