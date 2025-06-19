@@ -314,7 +314,7 @@ section {
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-.tech-badge {
+/* .tech-badge {
     display: inline-block;
     padding: 0.6rem 1.2rem;
     margin: 0;
@@ -329,7 +329,9 @@ section {
         0 0 15px rgba(0, 255, 255, 0.1),
         0 5px 15px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
-}
+} */
+
+
 
 
 .stat-card-3d {
@@ -617,5 +619,117 @@ section {
         /* Chrome-specific adjustments */
         backface-visibility: hidden;
         transform-style: preserve-3d;
+    }
+}
+
+.holo-particles {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #00d4ff;
+    border-radius: 50%;
+    animation: particleFloat 4s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(0px) translateX(0px);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-350px) translateX(var(--random-x, 0px));
+        opacity: 0;
+    }
+}
+
+.neon-terminal {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid #00ffff88;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    color: #00ffff;
+    text-shadow: 0 0 5px #00ffffaa, 0 0 10px #00ffff88;
+    box-shadow: 0 0 20px #00ffff44;
+    position: relative;
+    overflow: hidden;
+    min-height: 250px;
+}
+
+.neon-terminal::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(to bottom,
+            rgba(0, 255, 255, 0.05),
+            rgba(0, 255, 255, 0.05) 1px,
+            transparent 1px,
+            transparent 4px);
+    pointer-events: none;
+    animation: scanlines 1.5s linear infinite;
+}
+
+.clear-terminal {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: hidden;
+    padding-top: 10px;
+}
+
+.stream-line {
+    animation: streamIn 4s ease-in-out infinite;
+    color: #00ffff;
+    text-shadow: 0 0 5px #00ffffaa, 0 0 10px #00ffff88;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    opacity: 0;
+}
+
+
+@keyframes streamIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-20%);
+    }
+
+    15% {
+        opacity: 1;
+        transform: translateX(5%);
+    }
+
+    75% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(80%);
     }
 }

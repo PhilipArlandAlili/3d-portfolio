@@ -140,13 +140,14 @@
 
             <div class="cool-card p-3 p-lg-5 fade-up">
                 <div class="row align-items-center gy-4 gx-5">
-                    <div class="col-lg-4 center flex-column">
+                    <div class="col-lg-4 center flex-column position-relative">
                         <img src="assets/img/wave2.gif" alt="Philip Arland Alili" class="img-fluid rounded-4">
 
                         <div class="text-center">
                             <a href="#contact" class="btn custom-btn-secondary mt-4 py-2 px-4">Let's Work
                                 Together</a>
                         </div>
+                        <div class="holo-particles" id="particles"></div>
                     </div>
 
                     <div class="col-lg-8 col-md-12 text-light">
@@ -164,53 +165,64 @@
                             </p>
                         </blockquote>
 
+                        <div class="row g-2 d-flex flex-wrap">
+                            <!-- Updated SKILLS column -->
+                            <div class="col-12 col-md-5 d-flex flex-grow-1">
+                                <div class="neon-terminal w-100">
+                                    <div class="fix-terminal-line">SKILLS...</div>
+                                    <hr>
+                                    <div class="clear-terminal">
+                                        <div class="stream-line" style="animation-delay: 0s;">HTML</div>
+                                        <div class="stream-line" style="animation-delay: 0.5s;">CSS</div>
+                                        <div class="stream-line" style="animation-delay: 1s;">Bootstrap</div>
+                                        <div class="stream-line" style="animation-delay: 1.5s;">JavaScript</div>
+                                        <div class="stream-line" style="animation-delay: 2s;">PHP</div>
+                                        <div class="stream-line" style="animation-delay: 2.5s;">MySQL</div>
+                                        <div class="stream-line" style="animation-delay: 3s;">Git & GitHub</div>
+                                    </div>
+
+                                </div>
+                            </div>
 
 
-                        <h5 class="mt-5 text-infos">Skills</h5>
-                        <ul class="list-inline text-light mb-3">
-                            <li class="list-inline-item tech-badge">HTML</li>
-                            <li class="list-inline-item tech-badge">CSS</li>
-                            <li class="list-inline-item tech-badge">Bootstrap</li>
-                            <li class="list-inline-item tech-badge">JavaScript</li>
-                            <li class="list-inline-item tech-badge">PHP</li>
-                            <li class="list-inline-item tech-badge">MySQL</li>
-                            <li class="list-inline-item tech-badge">Git & GitHub</li>
-                        </ul>
 
-                        <h5 class="mt-5 text-infos">Stats</h5>
-                        <div class="row row-cols-2 row-cols-md-4 g-3 text-start">
-                            <div class="col-6 col-md-3">
-                                <div class="stat-card-3d">
-                                    <div class="inner-3d">
-                                        <strong class="h3 d-block">10+</strong>
-                                        <span class="text-secondary">Portfolio Projects</span>
+                            <div class="col-12 col-md-7 d-flex flex-grow-1">
+                                <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-3 w-100">
+                                    <div class="col-6 col-md-6">
+                                        <div class="stat-card-3d">
+                                            <div class="inner-3d">
+                                                <strong class="h3 d-block">10+</strong>
+                                                <span class="text-secondary">Portfolio Projects</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                        <div class="stat-card-3d">
+                                            <div class="inner-3d">
+                                                <strong class="h3 d-block">🎓</strong>
+                                                <span class="text-secondary">Entry-Level Developer</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                        <div class="stat-card-3d">
+                                            <div class="inner-3d">
+                                                <strong class="h3 d-block fs-2">∞</strong>
+                                                <span class="text-secondary">Love for Learning</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                        <div class="stat-card-3d">
+                                            <div class="inner-3d">
+                                                <strong class="h3 d-block">🚀</strong>
+                                                <span class="text-secondary">Ready & Eager to Learn</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6 col-md-3">
-                                <div class="stat-card-3d">
-                                    <div class="inner-3d">
-                                        <strong class="h3 d-block">🎓</strong>
-                                        <span class="text-secondary">Entry-Level Developer</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-3">
-                                <div class="stat-card-3d">
-                                    <div class="inner-3d">
-                                        <strong class="h3 d-block fs-2">∞</strong>
-                                        <span class="text-secondary">Love for Learning</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-3">
-                                <div class="stat-card-3d">
-                                    <div class="inner-3d">
-                                        <strong class="h3 d-block">🚀</strong>
-                                        <span class="text-secondary">Ready & Eager to Learn</span>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
 
@@ -459,17 +471,17 @@
 
     <section id="contact" class="contact py-5">
         <div class="container d-flex flex-column align-items-center justify-content-center text-center">
-            <div class="section-header mb-5">
-                <h2 class="section-title gradient-text">Let's Work Together</h2>
-                <p class="section-subtitle text-secondary fs-5 description">
-                    Ready to bring your ideas to life? I'm available for freelance projects and full-time
-                    opportunities.
-                </p>
-            </div>
-
             <div class="row">
                 <div class="contact-3d w-100">
                     <div class="contact-card">
+                        <div class="section-header mb-5">
+                            <h2 class="section-title gradient-text">Let's Work Together</h2>
+                            <p class="section-subtitle text-secondary fs-5 description">
+                                Ready to bring your ideas to life? I'm available for freelance projects and full-time
+                                opportunities.
+                            </p>
+                        </div>
+
                         <div class="row g-4 contact-methods">
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="contact-method h-100">
@@ -546,6 +558,14 @@
 
 
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const skills = document.querySelectorAll('.stream-line');
+            skills.forEach((el, i) => {
+                el.style.animationDelay = `${i * 0.3}s`;
+            });
+        });
+    </script>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -623,6 +643,31 @@
                     card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
                 });
             }
+
+            function createParticles() {
+                const container = document.getElementById('particles');
+                const particleCount = 30;
+
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+
+                    // Random horizontal position
+                    const randomX = (Math.random() - 0.5) * 200;
+                    particle.style.setProperty('--random-x', randomX + 'px');
+
+                    // Random starting position
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.bottom = '0px';
+
+                    // Random animation delay
+                    particle.style.animationDelay = Math.random() * 4 + 's';
+                    particle.style.animationDuration = (Math.random() * 2 + 3) + 's';
+
+                    container.appendChild(particle);
+                }
+            }
+            createParticles();
         });
     </script>
 
